@@ -13,17 +13,17 @@ app.config['SECRET_KEY'] = os.getenv('secretkey')
 
 db = SQLAlchemy(app)
 
-class AddTask(FlaskForm):
-    task_name = StringField('Task name', validators=[DataRequired()])
-    task_desc = StringField('Description', default = 'Add a description')
-    task_stat = SelectField('Status', choices=[('complete','Complete'), ('incomplete', 'Incomplete')])
-    submit = SubmitField('Add Task')
+class AddQuestion(FlaskForm):
+    q_name = StringField('Task name', validators=[DataRequired()])
+    #task_desc = StringField('Description', default = 'Add a description')
+    #task_stat = SelectField('Status', choices=[('complete','Complete'), ('incomplete', 'Incomplete')])
+    submit = SubmitField('Add Question')
 
-class UpdateTask(FlaskForm):
-    task_name = StringField('Task name', validators=[DataRequired()])
-    task_desc = StringField('Description', default = 'Add a description')
-    task_stat = SelectField('Status', choices=[('complete','Complete'), ('incomplete', 'Incomplete')])
-    submit = SubmitField('Update Task')
+class UpdateQuestion(FlaskForm):
+    q_name = StringField('Task name', validators=[DataRequired()])
+    #task_desc = StringField('Description', default = 'Add a description')
+    #task_stat = SelectField('Status', choices=[('complete','Complete'), ('incomplete', 'Incomplete')])
+    submit = SubmitField('Update Question')
 
 from application import routes
 from application import models
