@@ -1,5 +1,5 @@
 from application import app, db, AddQuestion, UpdateQuestion
-from application.models import Questions
+from application.models import Questions, Options
 from flask import render_template, request, redirect, url_for
 
 @app.route('/home')
