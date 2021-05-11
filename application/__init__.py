@@ -14,15 +14,11 @@ app.config['SECRET_KEY'] = os.getenv('secretkey')
 db = SQLAlchemy(app)
 
 class AddQuestion(FlaskForm):
-    q_name = StringField('Task name', validators=[DataRequired()])
-    #task_desc = StringField('Description', default = 'Add a description')
-    #task_stat = SelectField('Status', choices=[('complete','Complete'), ('incomplete', 'Incomplete')])
+    q_name = StringField('Question', validators=[DataRequired()])
     submit = SubmitField('Add Question')
 
 class UpdateQuestion(FlaskForm):
-    q_name = StringField('Task name', validators=[DataRequired()])
-    #task_desc = StringField('Description', default = 'Add a description')
-    #task_stat = SelectField('Status', choices=[('complete','Complete'), ('incomplete', 'Incomplete')])
+    q_name = StringField('Question', validators=[DataRequired()])
     submit = SubmitField('Update Question')
 
 from application import routes
