@@ -21,5 +21,11 @@ class UpdateQuestion(FlaskForm):
     q_name = StringField('Question', validators=[DataRequired()])
     submit = SubmitField('Update Question')
 
+class AddOptions(FlaskForm):
+    o_letter = SelectField('Letter', choices=[('a','A'),('b','B'),('c','C'),('d','D')])
+    option = StringField('Option', validators=[DataRequired()])
+    o_status = SelectField('Correct/incorrect', choices=[('correct','Correct'),('incorrect','Incorrect')])
+    submit = SubmitField('Add Option')
+
 from application import routes
 from application import models

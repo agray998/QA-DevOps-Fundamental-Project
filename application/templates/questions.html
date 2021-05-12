@@ -3,7 +3,7 @@
 <h2> Questions </h2>
 <br>
 {% for question in questions %}
-{{question.question}} | {{question.options}}
+{{question.question}} | {{question.options.option}}
 <br>
 {% endfor %}
 {% endblock body %}
