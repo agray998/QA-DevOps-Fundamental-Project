@@ -6,7 +6,9 @@
 {{question.question}} |
 {% for option in question.options %}
 {{option.optletter}}: {{option.option}}
+<a href="{{ url_for('update_o', oid=option.id) }}">Update Option</a>
 {% endfor %}
+<a href="{{ url_for('update_q', qid=question.id) }}">Update Question</a>
 <br>
 {% endfor %}
 {% endblock body %}

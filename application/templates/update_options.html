@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% block body %}
+<h2> Update Option </h2>
+<br>
+<div class='form'>
+            <form method='POST' action=''>
+                {{ form.hidden_tag() }}
+                {{ form.o_letter.label }} {{ form.o_letter }}
+                <br>
+		{{ form.o_option.label }} {{form.o_option }}
+		<br>
+		{{ form.o_status.label }} {{form.o_status }}
+		<br>
+                {{ form.submit }}
+            {{ message }}
+	    </form>
+</div>
+{% endblock body %}

@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% block body %}
+<h2> Update Question </h2>
+<br>
+<div class='form'>
+            <form method='POST' action=''>
+                {{ form.hidden_tag() }}
+                {{ form.q_name.label }} {{ form.q_name }}
+                <br>
+                {{ form.submit }}
+            {{ message }}
+	    </form>
+</div>
+{% endblock body %}
