@@ -16,8 +16,8 @@ def add_q():
     form = AddQuestion()
     if request.method == 'POST':
         q_name = form.q_name.data
-        newquest = Questions(question = q_name, options = Options.query.filter_by(question_id = newquest.id).first())
-        db.session.add(newtask)
+        newquest = Questions(question = q_name, options = Options.query.filter_by(question_id = newquest.id).all())
+        db.session.add(newquest)
         db.session.commit()
         return redirect(url_for('questions'))
     return render_template('add_question.html', form=form)
@@ -32,6 +32,9 @@ def add_o(qid):
         quest_id = qid
         newopt = Options(optletter = o_letter, option = option, status = o_status, question_id = qid)
         db.session.add(newopt)
+        db.session.commit()
+        question = Questions.query.filter_by(id = qid).first()
+        question.options = Options.query.filter_by(question_id = qid).all()
         db.session.commit()
         return redirect(url_for('questions'))
     return render_template('add_options.html', form=form)
