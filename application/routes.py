@@ -19,7 +19,7 @@ def add_q():
         newquest = Questions(question = q_name)
         db.session.add(newquest)
         db.session.commit()
-        return redirect(url_for('questions'))
+        return redirect(url_for('add_o', qid=newquest.id))
     return render_template('add_question.html', form=form)
 
 @app.route('/add-options/<int:qid>', methods=['GET','POST'])
@@ -36,5 +36,5 @@ def add_o(qid):
         question = Questions.query.filter_by(id = qid).first()
         question.options = Options.query.filter_by(question_id = qid).all()
         db.session.commit()
-        return redirect(url_for('questions'))
+        return redirect(url_for('add_o', qid=qid))
     return render_template('add_options.html', form=form)
