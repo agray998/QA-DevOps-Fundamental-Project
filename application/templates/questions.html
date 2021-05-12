@@ -3,7 +3,10 @@
 <h2> Questions </h2>
 <br>
 {% for question in questions %}
-{{question.question}} | {{question.options}}
+{{question.question}} |
+{% for option in question.options %}
+{{option.optletter}}: {{option.option}}
+{% endfor %}
 <br>
 {% endfor %}
 {% endblock body %}

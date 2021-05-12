@@ -16,7 +16,7 @@ def add_q():
     form = AddQuestion()
     if request.method == 'POST':
         q_name = form.q_name.data
-        newquest = Questions(question = q_name, options = Options.query.filter_by(question_id = newquest.id).all())
+        newquest = Questions(question = q_name)
         db.session.add(newquest)
         db.session.commit()
         return redirect(url_for('questions'))
@@ -27,7 +27,7 @@ def add_o(qid):
     form = AddOptions()
     if request.method == 'POST':
         o_letter = form.o_letter.data
-        option = form.option.data
+        option = form.o_option.data
         o_status = form.o_status.data
         quest_id = qid
         newopt = Options(optletter = o_letter, option = option, status = o_status, question_id = qid)
