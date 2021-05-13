@@ -66,3 +66,20 @@ def update_o(oid):
         db.session.commit()
         return redirect(url_for('questions'))
     return render_template('update_options.html', form=form)
+
+@app.route('/delete-option/<int:oid>')
+def delete_o(oid):
+    option = Options.query.filter_by(id=oid).first()
+    db.session.delete(option)
+    db.session.commit()
+    return redirect(url_for('questions'))
+
+@app.route('/delete-question/<int:qid>')
+def delete_q(qid):
+    question = Questions.query.filter_by(id=qid).first()
+    options = Options.query.filter_by(question_id=qid).all()
+    db.session.delete(question)
+    for option in options:
+        db.session.delete(option)
+    db.session.commit()
+    return redirect(url_for('questions'))
