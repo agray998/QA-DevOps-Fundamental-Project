@@ -57,4 +57,4 @@ class TestAddq(TestBase):
             data = dict(q_name="Newquest"),
             follow_redirects=True
         )
-        self.assertIn(b'Newquest',response.data)
+        self.assertIn(b'Add Options',response.data)
