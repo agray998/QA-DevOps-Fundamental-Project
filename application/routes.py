@@ -1,5 +1,5 @@
-from application import app, db, AddQuestion, UpdateQuestion, AddOptions, UpdateOptions
-from application.models import Questions, Options
+from application import app, db, AddQuestion, UpdateQuestion, AddOptions, UpdateOptions, AnswerQuestion
+from application.models import Questions, Options, Answer
 from flask import render_template, request, redirect, url_for
 
 @app.route('/')
@@ -91,3 +91,20 @@ def delete_q(qid):
         db.session.delete(option)
     db.session.commit()
     return redirect(url_for('questions'))
+
+@app.route('/answer-<int:qid>', methods=['GET','POST'])
+def answer_q(qid):
+    form = AnswerQuestion()
+    question = Questions.query.filter_by(id=qid).first()
+    options = Options.query.filter_by(question_id=qid).all()
+    if request.method == 'POST':
+        ans_opt = form.sel_opt.data
+        ans_status = Options.query.filter_by(question_id = qid, optletter = ans_opt).first().status
+        newans = Answer(name = ans_opt, status = ans_status)
+        db.session.add(newans)
+        db.session.commit()
+        if qid == Questions.query.order_by(Questions.id.desc()).first().id:
+            return redirect(url_for('questions'))
+        else:
+            return redirect(url_for('answer_q', qid=qid+1))
+    return render_template('answer-question.html', form=form, question=question, options=options)

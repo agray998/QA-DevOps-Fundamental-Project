@@ -33,5 +33,9 @@ class UpdateOptions(FlaskForm):
     o_status = SelectField('Correct/incorrect', choices=[('correct','Correct'),('incorrect','Incorrect')])
     submit = SubmitField('Update Option')
 
+class AnswerQuestion(FlaskForm):
+    sel_opt = SelectField('Select your answer:', choices=[('A','A'),('B','B'),('C','C'),('D','D')])
+    submit = SubmitField('Submit Answer')
+
 from application import routes
 from application import models

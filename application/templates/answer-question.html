@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% block body %}
+<h2> {{question.question}} </h2>
+<br>
+{% for option in options %}
+{{option.optletter}}: {{option.option}}
+<br>
+{% endfor %}
+<div class='form'>
+            <form method='POST' action=''>
+                {{ form.hidden_tag() }}
+		{{ form.sel_opt.label }} {{ form.sel_opt }}
+		<br>
+                {{ form.submit }}
+            {{ message }}
+	    </form>
+</div>
+{% endblock body %}
