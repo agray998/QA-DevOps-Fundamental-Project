@@ -2,7 +2,7 @@
 {% block body %}
 <h2> Question {{question.id}} </h2>
 <br>
-{{question.question}}
+<h3> {{question.question}} </h3>
 <br>
 {% for option in question.options %}
 {{option.optletter}}: {{option.option}} |
