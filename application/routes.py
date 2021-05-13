@@ -12,6 +12,12 @@ def questions():
     questions = Questions.query.all()
     return render_template('questions.html', questions=questions)
 
+@app.route('/question-<int:qid>')
+def question(qid):
+    question = Questions.query.filter_by(id=qid).first()
+    maxid = Questions.query.order_by(Questions.id.desc()).first().id
+    return render_template('question.html', question=question, maxid=maxid)
+
 @app.route('/add-question', methods=['GET','POST'])
 def add_q():
     form = AddQuestion()
@@ -60,19 +66,21 @@ def update_o(oid):
         o_status = form.o_status.data
         opt_id = oid
         opt = Options.query.filter_by(id=oid).first()
+        qid = Questions.query.filter_by(id=opt.question_id).first()
         opt.optletter = o_letter
         opt.option = option
         opt.status = o_status
         db.session.commit()
-        return redirect(url_for('questions'))
+        return redirect(url_for('question', qid=qid))
     return render_template('update_options.html', form=form)
 
 @app.route('/delete-option/<int:oid>')
 def delete_o(oid):
     option = Options.query.filter_by(id=oid).first()
+    qid = Questions.query.filter_by(id=option.question_id).first()
     db.session.delete(option)
     db.session.commit()
-    return redirect(url_for('questions'))
+    return redirect(url_for('question', qid=qid))
 
 @app.route('/delete-question/<int:qid>')
 def delete_q(qid):

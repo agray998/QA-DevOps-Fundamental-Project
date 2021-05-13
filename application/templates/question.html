@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+{% block body %}
+<h2> Question {{question.id}} </h2>
+<br>
+{{question.question}}
+<br>
+{% for option in question.options %}
+{{option.optletter}}: {{option.option}} |
+<a href="{{ url_for('update_o', oid=option.id) }}">Update Option</a> |
+<a href="{{ url_for('delete_o', oid=option.id) }}">Remove Option</a>
+<br>
+{% endfor %}
+<br>
+{% if question.id == maxid %}
+<a href="{{ url_for('questions') }}">Back to Question List</a>
+{% else %}
+<a href="{{ url_for('question', qid=question.id+1) }}">Next Question</a>
+{% endif %}
+{% endblock body %}
