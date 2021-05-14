@@ -67,7 +67,7 @@ def update_o(oid):
         o_status = form.o_status.data
         opt_id = oid
         opt = Options.query.filter_by(id=oid).first()
-        qid = Questions.query.filter_by(id=opt.question_id).first()
+        qid = Questions.query.filter_by(id=opt.question_id).first().id
         opt.optletter = o_letter
         opt.option = option
         opt.status = o_status
@@ -114,7 +114,7 @@ def answer_q(qid):
 def show_results():
     answers = Answer.query.all()
     score = Answer.query.filter_by(status='correct').count()
-    maxscore = Answer.query.all().count()
+    maxscore = Answer.query.count()
     return render_template('results.html', answers=answers, score=score, maxscore=maxscore)
 
 @app.route('/reset')
