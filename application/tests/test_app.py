@@ -92,7 +92,7 @@ class TestUpo(TestBase):
 # Test Deleting an option
 class TestDelo(TestBase):
     def test_del_o(self):
-        response = self.client.get(url_for('delete_o', oid = 1))
+        response = self.client.get(url_for('delete_o', oid = 1), follow_redirects=True)
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'Testq', response.data)
         self.assertNotIn(b'This is a test option', response.data)
@@ -100,7 +100,7 @@ class TestDelo(TestBase):
 # Test Deleting a question
 class TestDelq(TestBase):
     def test_del_q(self):
-        response = self.client.get(url_for('delete_q', qid = 1))
+        response = self.client.get(url_for('delete_q', qid = 1), follow_redirects=True)
         self.assertEqual(response.status_code, 200)
         self.assertNotIn(b'Testq', response.data)
 
