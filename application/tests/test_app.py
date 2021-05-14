@@ -84,7 +84,7 @@ class TestUpq(TestBase):
 class TestUpo(TestBase):
     def test_up_o(self):
         response = self.client.post(
-            url_for('update_o', qid=2),
+            url_for('update_o', oid=2),
             data = dict(o_letter='A', o_option="updatedoption", o_status='correct'),
             follow_redirects=True
         )
