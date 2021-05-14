@@ -105,7 +105,7 @@ def answer_q(qid):
         db.session.add(newans)
         db.session.commit()
         if qid == Questions.query.order_by(Questions.id.desc()).first().id:
-            return redirect(url_for('questions'))
+            return redirect(url_for('show_results'))
         else:
             return redirect(url_for('answer_q', qid=qid+1))
     return render_template('answer-question.html', form=form, question=question, options=options)
