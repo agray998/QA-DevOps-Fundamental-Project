@@ -64,7 +64,7 @@ class TestAddq(TestBase):
 class TestAddo(TestBase):
     def test_add_o(self):
         response = self.client.post(
-            url_for('add_o', qid=2),
+            url_for('add_o', qid=1),
             data = dict(o_letter='A', o_option="newoption", o_status='incorrect'),
             follow_redirects=True
         )
@@ -74,7 +74,7 @@ class TestAddo(TestBase):
 class TestUpq(TestBase):
     def test_up_q(self):
         response = self.client.post(
-            url_for('update_q', qid=2),
+            url_for('update_q', qid=1),
             data = dict(q_name="Updated question"),
             follow_redirects=True
         )
@@ -84,7 +84,7 @@ class TestUpq(TestBase):
 class TestUpo(TestBase):
     def test_up_o(self):
         response = self.client.post(
-            url_for('update_o', oid=2),
+            url_for('update_o', oid=1),
             data = dict(o_letter='A', o_option="updatedoption", o_status='correct'),
             follow_redirects=True
         )
