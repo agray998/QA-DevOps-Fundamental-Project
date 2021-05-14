@@ -94,8 +94,8 @@ class TestUpo(TestBase):
 class Testquiz(TestBase):
     def test_take_quiz(self):
         response = self.client.post(
-                url_for('answer_q', qid=1),
-                data = dict(sel_opt='A')
-                follow_redirects=True
+            url_for('answer_q', qid=1),
+            data = dict(sel_opt='A')
+            follow_redirects=True
         )
         self.assertIn(b'You scored 1', response.data)
