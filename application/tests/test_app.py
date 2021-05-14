@@ -43,7 +43,6 @@ class TestBase(TestCase):
 
 # Write a test class for testing that the questions page loads but we are not able to run a get request for delete and update routes.
 class TestViews(TestBase):
-
     def test_qs_get(self):
         response = self.client.get(url_for('questions'))
         self.assertEqual(response.status_code, 200)
@@ -89,6 +88,21 @@ class TestUpo(TestBase):
             follow_redirects=True
         )
         self.assertIn(b'updatedoption',response.data)
+
+# Test Deleting an option
+class TestDelo(TestBase):
+    def test_del_o(self):
+        response = self.client.get(url_for('delete_o', oid = 1))
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'Testq', response.data)
+        self.assertNotIn(b'This is a test option', response.data)
+
+# Test Deleting a question
+class TestDelq(TestBase):
+    def test_del_q(self):
+        response = self.client.get(url_for('delete_q', qid = 1))
+        self.assertEqual(response.status_code, 200)
+        self.assertNotIn(b'Testq', response.data)
 
 # Test taking quiz
 class Testquiz(TestBase):
