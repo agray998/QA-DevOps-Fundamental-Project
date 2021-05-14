@@ -16,3 +16,8 @@ class Answer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30))
     status = db.Column(db.String(10))
+
+class Result(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    score = db.Column(db.Integer)
+    date = db.Column(db.DateTime)

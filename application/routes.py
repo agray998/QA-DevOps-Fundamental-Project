@@ -1,6 +1,7 @@
 from application import app, db, AddQuestion, UpdateQuestion, AddOptions, UpdateOptions, AnswerQuestion
-from application.models import Questions, Options, Answer
+from application.models import Questions, Options, Answer, Result
 from flask import render_template, request, redirect, url_for
+from datetime import date
 
 @app.route('/')
 @app.route('/home')
@@ -108,3 +109,22 @@ def answer_q(qid):
         else:
             return redirect(url_for('answer_q', qid=qid+1))
     return render_template('answer-question.html', form=form, question=question, options=options)
+
+@app.route('/results')
+def show_results():
+    answers = Answer.query.all()
+    score = Answer.query.filter_by(status='correct').count()
+    maxscore = Answer.query.all().count()
+    return render_template('results.html', answers=answers, score=score, maxscore=maxscore)
+
+@app.route('/reset')
+def housekeeping():
+    score = Answer.query.filter_by(status='correct').count()
+    newresult = Result(score = score, date = date.today())
+    db.session.add(newresult)
+    db.session.commit()
+    answers = Answer.query.all()
+    for answer in answers:
+        db.session.delete(answer)
+    db.session.commit()
+    return redirect(url_for('home'))

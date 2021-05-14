@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block body %}
+<h2> Results </h2>
+<br>
+<h3> You scored {{score}} out of {{maxscore}} </h3>
+{% for answer in answers %}
+{{answer.name}} {{answer.status}}
+<br>
+{% endfor %}
+<a href="{{ url_for('housekeeping') }}">Return to Home</a>
+{% endblock body %}
