@@ -48,6 +48,12 @@ class TestViews(TestBase):
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'Testq', response.data)
 
+class TestHome(TestBase):
+    def test_home_get(self):
+        response = self.client.get(url_for('home'))
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'Home', response.data)
+
 # Test adding a question
 class TestAddq(TestBase):
     def test_add_q(self):
