@@ -78,7 +78,7 @@ def update_o(oid):
 @app.route('/delete-option/<int:oid>')
 def delete_o(oid):
     option = Options.query.filter_by(id=oid).first()
-    qid = Questions.query.filter_by(id=option.question_id).first()
+    qid = Questions.query.filter_by(id=option.question_id).first().id
     db.session.delete(option)
     db.session.commit()
     return redirect(url_for('question', qid=qid))
