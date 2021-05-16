@@ -54,6 +54,13 @@ class TestHome(TestBase):
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'Home', response.data)
 
+# Test sending a GET request to the add question page
+class TestViewAddQ(TestBase):
+    def test_addq_get(self):
+        response = self.client.get(url_for('add_q'))
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'Add a New Question', response.data)
+
 # Test adding a question
 class TestAddq(TestBase):
     def test_add_q(self):
@@ -64,6 +71,12 @@ class TestAddq(TestBase):
         )
         self.assertIn(b'Add Options',response.data)
 
+# Test sending a GET request to the add options page
+class TestViewAddO(TestBase):
+    def test_addo_get(self):
+        response = self.client.get(url_for('add_o', qid=1))
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'Add Options', response.data)
 
 # Test adding an option
 class TestAddo(TestBase):
