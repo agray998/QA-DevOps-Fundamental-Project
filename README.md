@@ -2,8 +2,9 @@
 This repository contains my deliverable for the QA devops fundamental project.  
 
 ## Project Brief  
-The brief for this project was to design and produce a web app of my choosing. The app needed to have CRUD (create, read, update and delete) functionality, needed to use the Flask micro-framework, and had to store information in a MySQL database comprised of a minimum of two tables sharing a one-to-many relationship. This structure is represented below:
+The brief for this project was to design and produce a web app of my choosing. The app needed to have CRUD (create, read, update and delete) functionality, needed to use the Flask micro-framework, and had to store information in a MySQL database comprised of a minimum of two tables sharing a one-to-many relationship. This structure is represented below:  
 img here  
+
 I chose to build a multiple-choice question (MCQ) quiz app, which allows users to write questions and options (create functionality), view questions and options (read functionality), update questions and options (update functionality) and delete questions and options (delete functionality). The database for the MVP for this project comprises a Questions table and an Options table, with each question associated with multiple options (one-to-many relationship). The ERD for this MVP is shown below:  
 ![ERD](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/ProjectmvpERD.png)  
 
