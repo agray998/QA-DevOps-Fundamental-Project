@@ -52,8 +52,6 @@ class TestAdd(TestBase):
 
     def test_create(self):
          self.submit_input("updatedvalue")
-         self.assertIn(url_for('home'), self.driver.current_url)
-
 
          entry = Questions.query.filter_by(question="updatedvalue").first()
          self.assertNotEqual(entry, None) 
@@ -61,6 +59,5 @@ class TestAdd(TestBase):
     def test_empty_validation(self):
         self.submit_input('')
         self.assertIn(url_for('update_q', qid=1), self.driver.current_url)
-        entry = Questions.query.filter_by(question=case).first()
-        entries = Questions.query.all()
+        entry = Questions.query.filter_by(id=1).first()
         self.assertNotEqual(entry.question, None)
