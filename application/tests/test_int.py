@@ -52,7 +52,7 @@ class TestAdd(TestBase):
     def test_create(self):
         for case in self.TEST_CASES:
             self.submit_input(case)
-            self.assertIn(url_for('add_o'), self.driver.current_url)
+            self.assertIn(url_for('add_o', qid=self.TEST_CASES.index(case)), self.driver.current_url)
 
 
             entry = Questions.query.filter_by(question=case).first()
