@@ -53,7 +53,7 @@ class TestAdd(TestBase):
     def test_create(self):
          self.submit_input("updatedvalue")
 
-         entry = Questions.query.filter_by(question="updatedvalue").first()
+         entry = Questions.query.filter_by(question="updatedvalue").all()
          self.assertNotEqual(entry, None) 
 
     def test_empty_validation(self):
