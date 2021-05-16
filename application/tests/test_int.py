@@ -5,6 +5,7 @@ from flask import url_for
 
 from application import app, db
 from application.models import Questions, Options
+from application.forms import AddQuestion
 
 class TestBase(LiveServerTestCase):
     TEST_PORT = 5050 # test port, doesn't need to be open
