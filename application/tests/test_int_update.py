@@ -30,7 +30,7 @@ class TestBase(LiveServerTestCase):
         self.driver = webdriver.Chrome(options=chrome_options)
 
         db.create_all() # create schema before we try to get the page
-        newquest = Question(question="Test")
+        newquest = Questions(question="Test")
         db.session.add(newquest)
         db.session.commit()
 
