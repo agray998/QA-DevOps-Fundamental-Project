@@ -46,7 +46,7 @@ class TestAdd(TestBase):
     TEST_CASES = 'Chess', 'Backgammon', 'Hungry Hungry Hippos', '#@!%$', ';DROP TABLE games;', 'Borderlands 3'
 
     def submit_input(self, case): # custom method
-        self.driver.find_element_by_xpath('//*[@id="q_name"]').send_keys(case)
+        self.driver.find_element_by_xpath('/html/body/div/form/input[2]').send_keys(case)
         self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 
     def test_create(self):
