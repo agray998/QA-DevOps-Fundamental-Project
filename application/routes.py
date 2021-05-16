@@ -1,4 +1,5 @@
-from application import app, db, AddQuestion, UpdateQuestion, AddOptions, UpdateOptions, AnswerQuestion
+from application import app, db
+from application.forms import AddQuestion, UpdateQuestion, AddOptions, UpdateOptions, AnswerQuestion
 from application.models import Questions, Options, Answer, Result
 from flask import render_template, request, redirect, url_for
 from datetime import date
@@ -86,7 +87,7 @@ def delete_o(oid):
 @app.route('/delete-question/<int:qid>')
 def delete_q(qid):
     question = Questions.query.filter_by(id=qid).first()
-    options = Options.query.filter_by(question_id=qid).all()
+    options = question.options
     db.session.delete(question)
     for option in options:
         db.session.delete(option)
@@ -97,7 +98,7 @@ def delete_q(qid):
 def answer_q(qid):
     form = AnswerQuestion()
     question = Questions.query.filter_by(id=qid).first()
-    options = Options.query.filter_by(question_id=qid).all()
+    options = question.options
     if request.method == 'POST':
         ans_opt = form.sel_opt.data
         ans_status = Options.query.filter_by(question_id = qid, optletter = ans_opt).first().status
