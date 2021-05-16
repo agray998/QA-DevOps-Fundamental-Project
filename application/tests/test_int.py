@@ -31,7 +31,7 @@ class TestBase(LiveServerTestCase):
 
         db.create_all() # create schema before we try to get the page
 
-        self.driver.get(f'http://localhost:{self.TEST_PORT}')
+        self.driver.get(f'http://localhost:{self.TEST_PORT}/add-question')
 
     def tearDown(self):
         self.driver.quit()
@@ -39,14 +39,14 @@ class TestBase(LiveServerTestCase):
         db.drop_all()
 
     def test_server_is_up_and_running(self):
-        response = urlopen(f'http://localhost:{self.TEST_PORT}')
+        response = urlopen(f'http://localhost:{self.TEST_PORT}/add-question')
         self.assertEqual(response.code, 200)
 
 class TestAdd(TestBase):
     TEST_CASES = 'Chess', 'Backgammon', 'Hungry Hungry Hippos', '#@!%$', ';DROP TABLE games;', 'Borderlands 3'
 
     def submit_input(self, case): # custom method
-        self.driver.find_element_by_xpath('/html/body/div/form/input[2]').send_keys(case)
+        self.driver.find_element_by_xpath('//*[@id="q_name"]').send_keys(case)
         self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 
     def test_create(self):
