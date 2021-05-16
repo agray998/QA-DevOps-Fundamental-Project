@@ -3,7 +3,7 @@
 <h2> Questions </h2>
 <br>
 {% for question in questions %}
-<a href="{{ url_for('question', qid=question.id) }}">{{question.question}}</a>
+<a href="{{ url_for('question', qid=question.id) }}">{{question.question}}</a> | <a href="{{ url_for('update_q', qid=question.id) }}"> Update </a> | <a href="{{ url_for('delete_q', qid=question.id) }}"> Delete </a>
 <br>
 {% endfor %}
 {% endblock body %}
