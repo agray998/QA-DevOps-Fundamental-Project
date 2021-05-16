@@ -50,7 +50,7 @@ class TestAdd(TestBase):
         self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 
     def test_create(self):
-        for case in self.TEST_CASES:
+        for case in TEST_CASES:
             self.submit_input(case)
             #self.assertIn(url_for('add_o', qid=self.TEST_CASES.index(case)+1), self.driver.current_url)
 
