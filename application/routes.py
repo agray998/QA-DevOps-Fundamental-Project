@@ -101,7 +101,10 @@ def answer_q(qid):
     options = question.options
     if request.method == 'POST':
         ans_opt = form.sel_opt.data
-        ans_status = Options.query.filter_by(question_id = qid, optletter = ans_opt).first().status
+        ans = Options.query.filter_by(question_id = qid, optletter = ans_opt).first()
+        if ans == None:
+            message = "Please select a valid option"
+            return render_template('answer-question.html', form=form, question=question, options=options, message=message)
         newans = Answer(name = ans_opt, status = ans_status)
         db.session.add(newans)
         db.session.commit()
