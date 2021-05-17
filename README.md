@@ -35,9 +35,12 @@ Jenkins was used as a CI server, providing automation of building and testing. T
 ## Risk Assessment:
 Prior to building the app, a risk assessment was undertaken to identify risks and propose measures to control these risks. These measures could then be implemented in the app. This initial risk assessment is shown below:   
 ![RA](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/project%20RA.png)  
-Some of the control measures implemented in the project as a result of this risk assessment are as follows:  
+Some of the control measures implemented in the project as a result of the risk assessment are as follows:  
 * User profiles were not implemented, as this would require sending some form of authentication over unsecured HTTP connection.  
 * SQLAlchemy was used with Flask to prevent SQL commands being sent directly to the database.  
+* Credentials stored as secret texts on Jenkins VM and exported as environment variables to avoid accidentally publishing confidential details.  
+
+The likelihood and impact level (out of 5) of each risk identified were estimated before and after the implementation of control measures, to quantify the effect of implementing the measures.
 
 ## Testing:  
 Testing the app was an essential part of the development process. Two types of testing were implemented:  
@@ -59,6 +62,10 @@ The user is then redirected to a page which allows them to add up to four option
 ![view questions](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/viewqos.png)  
 Users can also update and delete questions, the app is set up so that deleting a question also removes the associated options.  
 ![view questions](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/viewqs.png)  
+
+## Known Issues:
+* There is nothing to stop two options for the same question being assigned the same letter
+* 
 
 ## Future Work:
 In future sprints, I would like to add the additional functionality of question categorisation and a statistics page which provides a break-down by quiz. If the appropriate security measures were adhered to, future sprints could also reconsider adding user profiles which would allow users to view and write quizzes specific to them.
