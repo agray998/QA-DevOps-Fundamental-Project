@@ -132,7 +132,9 @@ class Testquiz(TestBase):
             follow_redirects=True
         )
         self.assertIn(b'You scored 1', response.data)
-     def test_bad_opt(self):
+
+class Testquiz2(TestBase):
+    def test_bad_opt(self):
         response = self.client.post(
             url_for('answer_q', qid=1),
             data = dict(sel_opt='B'),
