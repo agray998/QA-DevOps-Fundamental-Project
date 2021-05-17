@@ -1,5 +1,5 @@
 # QA-DevOps-Fundamental-Project- MCQ App:  
-This repository contains my deliverable for the QA devops fundamental project. mwebvjkewbvjkew
+This repository contains my deliverable for the QA devops fundamental project.
 
 ## Contents:
 * [Project Brief](#Project-Brief)  
