@@ -24,6 +24,7 @@ Additional functionality was added on top of this MVP, specifically functionalit
 
 ![Current ERD](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/ProjectERDcurrent.png)  
 The goal for future iterations of this project will be to add categorisation of questions by topic via a quizzes table, and to make results specific to specific quizzes, a proposed ERD for this is:  
+
 ![Future ERD](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/ProjectERDfuture2.png)  
 
 ## CI Pipeline:  
