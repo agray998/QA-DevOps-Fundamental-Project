@@ -24,13 +24,16 @@ The goal for future iterations of this project will be to add categorisation of 
 ![Future ERD](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/ProjectERDfuture.png)  
 
 ## CI Pipeline:  
-In addition to the above requirements, the project required the implementation of several stages of a typical CI pipeline. These were project tracking, version control, development environment and CI server. For project tracking Trello was used to create a project tracking board. Items were assigned story points, acceptance criteria and MoSCoW prioritisation, and moved from project backlog, to sprint backlog, to review and then complete as the project progressed. The state of the Trello board at the beginning of sprint one was:  
+In addition to the above requirements, the project required the implementation of several stages of a typical CI pipeline. These were project tracking, version control, development environment and build server. For project tracking Trello was used to create a project tracking board. Items were assigned story points, acceptance criteria and MoSCoW prioritisation, and moved from project backlog, to sprint backlog, to review and then complete as the project progressed. The state of the Trello board at the beginning of sprint one was:  
 ![trello](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/trelloboard.png)  
 The trello board can be accessed [here](https://trello.com/b/KMCaNgMA/fundamental-project). A burndown chart for this project was also produced:  
 ![burndown](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/burndown.png)  
-For version control, git was used, with the project repository hosted on github. The development environment used was a python3 virtual environment (venv) hosted on a virtual machine running Ubuntu 20.04.  
 
-Jenkins was used as a CI server, providing automation of building and testing. This automation is achieved by setting up a freestyle project which executes the test.sh script when it recieves a webhook from github upon pushing a commit. Jenkins is also used to run the via gunicorn once testing is complete. Gunicorn is a WSGI server which allows multiple processes to run the app simultaneously. The full pipeline utilised in this project is:  
+For version control, git was used, with the project repository hosted on github. Version control via git allows changes to the project to be made and committed whilst keeping the commit history for access to earlier versions. GitHub as a repository hosting service allows the repository to be stored away from the development environment, as well as providing webhooks, which send http POST requests to the build server to automate building and testing.  
+
+The development environment used was a python3 virtual environment (venv) hosted on a virtual machine running Ubuntu 20.04. Python is used as Flask is a python-based framework. A venv allows pip installs to be performed and the app to be run without affecting any conflicting pip installs on the same machine.  
+
+Jenkins was used as a build server, providing automation of building and testing. This automation is achieved by setting up a freestyle project which executes the test.sh script when it recieves a webhook from github upon pushing a commit. Jenkins is also used to run the app via gunicorn once testing is complete. Gunicorn is a WSGI server which allows multiple processes to run the app simultaneously. The full pipeline utilised in this project is:  
 ![CI Pipeline](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/projCI.png)  
 
 ## Risk Assessment:
@@ -48,7 +51,7 @@ Testing the app was an essential part of the development process. Two types of t
 * Unit testing tests _units of functionality_ (i.e functions) within the app. Unit tests were written for create, read, update and delete functionality, to ensure that these worked.
 * Integration testing tests the function of the app in an as-live environment, being able to simulate keyboard input and mouse clicks to ensure that these elements of the app function as intended. Integration tests were written for many of the forms employed in the app.  
 
-Tests such as security tests and performance tests were not part of the scope of this project, only testing for functionality was performed. As mentioned previously, these tests are automated using Jenkins via webhooks. A successful build, in which all tests passed, is shown below:  
+As this is not a production app, tests such as security tests and performance tests were not part of the scope of this project; only testing for functionality was performed. As mentioned previously, these tests are automated using Jenkins via webhooks. A successful build, in which all tests passed, is shown below:  
 ![build](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/tests%20run%2016-05.png)  
 The coverage reports, showing what percentage of statements were included in the tests, were output as html files, which were archived post-build. The coverage report for the above build was:  
 ![cov](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/covreport%2016-05.png)  
@@ -63,10 +66,11 @@ The user is then redirected to a page which allows them to add up to four option
 ![view questions](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/viewqos.png)  
 Users can also update and delete questions, the app is set up so that deleting a question also removes the associated options.  
 ![view questions](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/viewqs.png)  
+Finally, users can take the quiz by following the 'Take Quiz' link; answers are submitted via a form and, once all questions have been answered a score is calculated and the user can view the result. Upon returning to the home page the score is recorded for long-term statistics and the answers deleted, readying the app for the next time the user takes the quiz.
 
 ## Known Issues:
 * There is nothing to stop two options for the same question being assigned the same letter
-* 
+* Submitted answers are not cleared post-quiz unless the user clicks the 'return to home' link.
 
 ## Future Work:
-In future sprints, I would like to add the additional functionality of question categorisation and a statistics page which provides a break-down by quiz. If the appropriate security measures were adhered to, future sprints could also reconsider adding user profiles which would allow users to view and write quizzes specific to them.
+In future sprints, in addition to fixing the issues identified above, I would like to add the additional functionality of question categorisation and a statistics page which provides a break-down of results over time by quiz. If the appropriate security measures were adhered to, future sprints could also reconsider adding user profiles which would allow users to view and write quizzes specific to them.
