@@ -63,8 +63,8 @@ As this is not a production app, tests such as security tests and performance te
 
 ![build](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/tests%20run%2016-05.png)  
 The coverage reports, showing what percentage of statements were included in the tests, were output as html files, which were archived post-build. The coverage report for the above build was:  
-![cov](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/covreport%2016-05.png)  
 
+![cov](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/covreport%2016-05.png)  
 Showing 96% coverage overall. All tests must pass for a build to be successful, a single failed test marks the build overall as failed.
 
 # The App:  
