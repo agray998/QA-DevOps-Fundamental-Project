@@ -19,6 +19,7 @@ The trello board can be accessed [here](https://trello.com/b/KMCaNgMA/fundamenta
 A burndown chart for this project was also produced:  
 ![burndown](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/burndown.png)  
 For version control, git was used, with the project repository hosted on github. The development environment used was a python3 virtual environment (venv) hosted on a virtual machine running Ubuntu 20.04.  
+
 Jenkins was used as a CI server, providing automation of building and testing. This automation is achieved by setting up a freestyle project which executes the test.sh script when it recieves a webhook from github upon pushing a commit. Jenkins is also used to run the via gunicorn once testing is complete. Gunicorn is a WSGI server which allows multiple processes to run the app simultaneously. The full pipeline utilised in this project is:  
 ![CI Pipeline](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/projCI.png)  
 
