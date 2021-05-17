@@ -8,6 +8,7 @@ This repository contains my deliverable for the QA devops fundamental project.
 * [Risk Assessment](#Risk-Assessment)
 * [Testing](#Testing)
 * [The App](#The-App)
+* [Known Issues](#Known-Issues)
 * [Future Work](#Future-Work)
 
 ## Project Brief:  
