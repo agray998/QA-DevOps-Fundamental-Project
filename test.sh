@@ -16,3 +16,5 @@ python3 -m pytest --cov=application --cov-report html
 export db_uri
 export secretkey
 
+python3 create.py
+python3 app.py
