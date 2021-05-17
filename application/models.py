@@ -4,7 +4,6 @@ class Questions(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     question = db.Column(db.String(50))
     options = db.relationship('Options', backref='question')
-    answer = db.relationship('Answers', backref='question')
 
 class Options(db.Model):
     id = db.Column(db.Integer, primary_key=True)
