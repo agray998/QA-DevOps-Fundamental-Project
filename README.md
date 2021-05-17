@@ -56,8 +56,9 @@ Upon navigating to the app the user is presented with the homepage:
 The nav bar provides links which allow users to add a question, view questions and take the quiz. To add a question, the user simply fills in the name of the question on the form:  
 ![add question](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/addq.png)  
 The user is then redirected to a page which allows them to add up to four options for the question. The view questions page displays a list of the questions which have been added so far, which are hyperlinked to allow the user to view, update and delete the associated options:  
-![view questions](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/viewqs.png)  
+![view questions](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/viewqos.png)  
 Users can also update and delete questions, the app is set up so that deleting a question also removes the associated options.  
+![view questions](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/viewqs.png)  
 
 ## Future Work:
 In future sprints, I would like to add the additional functionality of question categorisation and a statistics page which provides a break-down by quiz. If the appropriate security measures were adhered to, future sprints could also reconsider adding user profiles which would allow users to view and write quizzes specific to them.
