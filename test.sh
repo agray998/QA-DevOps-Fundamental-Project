@@ -17,4 +17,4 @@ export db_uri
 export secretkey
 
 python3 create.py
-gunicorn --workers=4 --bind=0.0.0.0:5000 app:app
+gunicorn -b --workers=4 --bind=0.0.0.0:5000 app:app
