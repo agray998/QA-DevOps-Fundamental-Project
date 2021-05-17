@@ -25,8 +25,7 @@ The goal for future iterations of this project will be to add categorisation of 
 ## CI Pipeline:  
 In addition to the above requirements, the project required the implementation of several stages of a typical CI pipeline. These were project tracking, version control, development environment and CI server. For project tracking Trello was used to create a project tracking board. Items were assigned story points, acceptance criteria and MoSCoW prioritisation, and moved from project backlog, to sprint backlog, to review and then complete as the project progressed. The state of the Trello board at the beginning of sprint one was:  
 ![trello](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/trelloboard.png)  
-The trello board can be accessed [here](https://trello.com/b/KMCaNgMA/fundamental-project).  
-A burndown chart for this project was also produced:  
+The trello board can be accessed [here](https://trello.com/b/KMCaNgMA/fundamental-project). A burndown chart for this project was also produced:  
 ![burndown](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/burndown.png)  
 For version control, git was used, with the project repository hosted on github. The development environment used was a python3 virtual environment (venv) hosted on a virtual machine running Ubuntu 20.04.  
 
