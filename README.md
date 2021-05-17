@@ -21,7 +21,7 @@ I have chosen to build a multiple-choice question (MCQ) quiz app, which allows u
 Additional functionality was added on top of this MVP, specifically functionality to allow users to answer the questions added to the app and to view their score. An answers table and a results table were added to the database to facilitate this. The ERD for the project in its' current form is:  
 ![Current ERD](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/ProjectERDcurrent.png)  
 The goal for future iterations of this project will be to add categorisation of questions by topic via a quizzes table, and to make results specific to specific quizzes, a proposed ERD for this is:  
-![Future ERD](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/ProjectERDfuture.png)  
+![Future ERD](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/ProjectERDfuture2.png)  
 
 ## CI Pipeline:  
 In addition to the above requirements, the project required the implementation of several stages of a typical CI pipeline. These were project tracking, version control, development environment and build server. For project tracking Trello was used to create a project tracking board. Items were assigned story points, acceptance criteria and MoSCoW prioritisation, and moved from project backlog, to sprint backlog, to review and then complete as the project progressed. The state of the Trello board at the beginning of sprint one was:  
