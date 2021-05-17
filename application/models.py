@@ -16,7 +16,6 @@ class Answer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30))
     status = db.Column(db.String(10))
-    question_id = db.Column(db.Integer, db.ForeignKey('questions.id'))
 
 class Result(db.Model):
     id = db.Column(db.Integer, primary_key=True)
