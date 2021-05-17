@@ -17,7 +17,7 @@ A burndown chart for this project was also produced:
 For version control, git was used, with the project repository hosted on github. The development environment used was a python3 virtual environment (venv) hosted on a virtual machine running Ubuntu 20.04.  
 Jenkins was used as a CI server, providing automation of building and testing. This automation was achieved by setting up a freestyle project which executes the test.sh script when it recieves a webhook from github upon pushing a commit.  
 The full pipeline utilised in this project was:  
-img here  
+![CI Pipeline](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/projCI.png)  
 
 ## Risk Assessment:
 Prior to building the app, a risk assessment was undertaken to identify risks and propose measures to control these risks. These measures could then be implemented in the app. This initial risk assessment is shown below:   
