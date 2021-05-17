@@ -19,14 +19,13 @@ The trello board can be accessed [here](https://trello.com/b/KMCaNgMA/fundamenta
 A burndown chart for this project was also produced:  
 ![burndown](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/burndown.png)  
 For version control, git was used, with the project repository hosted on github. The development environment used was a python3 virtual environment (venv) hosted on a virtual machine running Ubuntu 20.04.  
-Jenkins was used as a CI server, providing automation of building and testing. This automation was achieved by setting up a freestyle project which executes the test.sh script when it recieves a webhook from github upon pushing a commit.  
-The full pipeline utilised in this project was:  
+Jenkins was used as a CI server, providing automation of building and testing. This automation is achieved by setting up a freestyle project which executes the test.sh script when it recieves a webhook from github upon pushing a commit. Jenkins is also used to run the via gunicorn once testing is complete. Gunicorn is a WSGI server which allows multiple processes to run the app simultaneously. The full pipeline utilised in this project is:  
 ![CI Pipeline](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/projCI.png)  
 
 ## Risk Assessment:
 Prior to building the app, a risk assessment was undertaken to identify risks and propose measures to control these risks. These measures could then be implemented in the app. This initial risk assessment is shown below:   
 ![RA](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/project%20RA.png)  
-Some of the control measures implemented in the project as a result of this risk assessment were as follows:  
+Some of the control measures implemented in the project as a result of this risk assessment are as follows:  
 * User profiles were not implemented, as this would require sending some form of authentication over unsecured HTTP connection.  
 * SQLAlchemy was used with Flask to prevent SQL commands being sent directly to the database.  
 
@@ -35,11 +34,11 @@ Testing the app was an essential part of the development process. Two types of t
 * Unit testing tests _units of functionality_ (i.e functions) within the app. Unit tests were written for create, read, update and delete functionality, to ensure that these worked.
 * Integration testing tests the function of the app in an as-live environment, being able to simulate keyboard input and mouse clicks to ensure that these elements of the app function as intended. Integration tests were written for many of the forms employed in the app.  
 
-Tests such as security tests and performance tests were not part of the scope of this project, only testing for functionality was performed. As mentioned previously, these tests were automated using Jenkins using webhooks. A successful build, in which all tests passed, is shown below:  
+Tests such as security tests and performance tests were not part of the scope of this project, only testing for functionality was performed. As mentioned previously, these tests are automated using Jenkins via webhooks. A successful build, in which all tests passed, is shown below:  
 ![build](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/tests%20run%2016-05.png)  
 The coverage reports, showing what percentage of statements were included in the tests, were output as html files, which were archived post-build. The coverage report for the above build was:  
 ![cov](https://github.com/agray998/QA-DevOps-Fundamental-Project/blob/main/figures/covreport%2016-05.png)  
-Showing 96% coverage overall. All tests must pass for a build to be successful, a single failed test marks the build overall as failed:  
+Showing 96% coverage overall. All tests must pass for a build to be successful, a single failed test marks the build overall as failed.
 
 # The App:  
 Upon navigating to the app the user is presented with the homepage:  
