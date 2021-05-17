@@ -105,7 +105,7 @@ def answer_q(qid):
         if ans == None:
             message = "Please select a valid option"
             return render_template('answer-question.html', form=form, question=question, options=options, message=message)
-        newans = Answer(name = ans_opt, status = ans.status, question_id=qid)
+        newans = Answer(name = ans_opt, status = ans.status)
         db.session.add(newans)
         db.session.commit()
         if qid == Questions.query.order_by(Questions.id.desc()).first().id:
