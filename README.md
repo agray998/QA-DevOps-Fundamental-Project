@@ -8,6 +8,7 @@ This repository contains my deliverable for the QA devops fundamental project.
 * [Risk Assessment](#Risk-Assessment)
 * [Testing](#Testing)
 * [The App](#The-App)
+* [Updates](#Updates)
 * [Known Issues](#Known-Issues)
 * [Future Work](#Future-Work)
 
@@ -83,9 +84,17 @@ Users can also update and delete questions, the app is set up so that deleting a
 
 Finally, users can take the quiz by following the 'Take Quiz' link; answers are submitted via a form and, once all questions have been answered a score is calculated and the user can view the result. Upon returning to the home page the score is recorded for long-term statistics and the answers deleted, readying the app for the next time the user takes the quiz.
 
+## Updates:
+* 12/06/2021:
+    * Background colour changed to a more pleasant dodger blue
+    * __repr__ methods added to Questions and Options classes
+    * Quiz class added
+    * Questions can now be categorised by quiz
+    * Different quizzes can now be taken independently
+
 ## Known Issues:
 * There is nothing to stop two options for the same question being assigned the same letter
 * Submitted answers are not cleared post-quiz unless the user clicks the 'return to home' link.
 
 ## Future Work:
-In future sprints, in addition to fixing the issues identified above, I would like to add the additional functionality of question categorisation and a statistics page which provides a break-down of results over time by quiz. If the appropriate security measures were adhered to, future sprints could also reconsider adding user profiles which would allow users to view and write quizzes specific to them.
+In future sprints, in addition to fixing the issues identified above, I would like to add a statistics page which provides a break-down of results over time by quiz. If the appropriate security measures were adhered to, future sprints could also reconsider adding user profiles which would allow users to view and write quizzes specific to them.
