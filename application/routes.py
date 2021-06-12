@@ -1,6 +1,6 @@
 from application import app, db
-from application.forms import AddQuestion, UpdateQuestion, AddOptions, UpdateOptions, AnswerQuestion
-from application.models import Questions, Options, Answer, Result
+from application.forms import AddQuestion, UpdateQuestion, AddOptions, UpdateOptions, AnswerQuestion, AddQuiz
+from application.models import Questions, Options, Answer, Result, Quiz
 from flask import render_template, request, redirect, url_for
 from datetime import date
 
@@ -20,12 +20,27 @@ def question(qid):
     maxid = Questions.query.order_by(Questions.id.desc()).first().id
     return render_template('question.html', question=question, maxid=maxid)
 
+@app.route('/add-quiz', methods=['GET', 'POST'])
+def add_quiz():
+    form = AddQuiz()
+    if request.method == 'POST':
+        name = form.quiz_name.data
+        quiz = Quiz(quiz_name = name)
+        db.session.add(quiz)
+        db.session.commit()
+        return redirect(url_for('add_q'))
+    return render_template('add_quiz.html', form=form)
+
 @app.route('/add-question', methods=['GET','POST'])
 def add_q():
     form = AddQuestion()
+    quizzes = Quiz.query.all()
+    for quiz in quizzes:
+        form.quiz.choices.append((quiz.id, quiz.quiz_name))
     if request.method == 'POST':
         q_name = form.q_name.data
-        newquest = Questions(question = q_name)
+        quiz_id = form.quiz.data
+        newquest = Questions(question = q_name, quiz_id = quiz_id)
         db.session.add(newquest)
         db.session.commit()
         return redirect(url_for('add_o', qid=newquest.id))

@@ -2,8 +2,13 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, SelectField
 from wtforms.validators import DataRequired
 
+class AddQuiz(FlaskForm):
+    quiz_name = StringField('Quiz Title', validators=[DataRequired(message="This field cannot be left blank")])
+    submit = SubmitField('Add Quiz')
+
 class AddQuestion(FlaskForm):
     q_name = StringField('Question', validators=[DataRequired(message="This field cannot be left blank")])
+    quiz = SelectField('Add to quiz:', choices=[])
     submit = SubmitField('Add Question')
 
 class UpdateQuestion(FlaskForm):

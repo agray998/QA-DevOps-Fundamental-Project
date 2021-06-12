@@ -2,7 +2,7 @@
 <body style="background-color: dodgerblue;">
 <h1>Welcome to my Quiz App</h1>
 <br>
-<a href="{{ url_for('home') }}">Home</a> || <a href="{{ url_for('add_q') }}">Add a Question</a> || <a href="{{ url_for('questions') }}">View Questions</a> || <a href="{{ url_for('answer_q', qid=1) }}">Take Quiz</a>
+<a href="{{ url_for('home') }}">Home</a> || <a href="{{ url_for('add_quiz') }}">Add a Quiz</a> || <a href="{{ url_for('add_q') }}">Add a Question</a> || <a href="{{ url_for('questions') }}">View Questions</a> || <a href="{{ url_for('answer_q', qid=1) }}">Take Quiz</a>
 {% block body %}
 {% endblock body %}
 </body>

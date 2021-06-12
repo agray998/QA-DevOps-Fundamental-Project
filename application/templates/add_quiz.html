@@ -1,12 +1,11 @@
 {% extends 'layout.html' %}
 {% block body %}
-<h2> Add a New Question </h2>
+<h2> Add a New Quiz </h2>
 <br>
 <div class='form'>
             <form method='POST' action=''>
                 {{ form.hidden_tag() }}
-                {{ form.q_name.label }} {{ form.q_name }}
-                {{ form.quiz.label }} {{ form.quiz }}
+                {{ form.quiz_name.label }} {{ form.quiz_name }}
                 <br>
                 {{ form.submit }}
             {{ message }}
