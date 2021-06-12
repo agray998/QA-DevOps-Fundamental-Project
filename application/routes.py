@@ -99,13 +99,12 @@ def answer_q(qid):
     form = AnswerQuestion()
     question = Questions.query.filter_by(id=qid).first()
     options = question.options
+    for option in options:
+        form.sel_opt.choices.append((option.id, option.option))
     if request.method == 'POST':
         ans_opt = form.sel_opt.data
-        ans = Options.query.filter_by(question_id = qid, optletter = ans_opt).first()
-        if ans == None:
-            message = "Please select a valid option"
-            return render_template('answer-question.html', form=form, question=question, options=options, message=message)
-        newans = Answer(name = ans_opt, status = ans.status)
+        ans = Options.query.filter_by(id = ans_opt).first()
+        newans = Answer(name = ans.__repr__(), status = ans.status)
         db.session.add(newans)
         db.session.commit()
         if qid == Questions.query.order_by(Questions.id.desc()).first().id:

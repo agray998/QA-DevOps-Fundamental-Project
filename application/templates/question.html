@@ -5,7 +5,7 @@
 <h3> {{question.question}} </h3>
 <br>
 {% for option in question.options %}
-{{option.optletter}}: {{option.option}} |
+{{option}} |
 <a href="{{ url_for('update_o', oid=option.id) }}">Update Option</a> |
 <a href="{{ url_for('delete_o', oid=option.id) }}">Remove Option</a>
 <br>

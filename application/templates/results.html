@@ -4,7 +4,7 @@
 <br>
 <h3> You scored {{score}} out of {{maxscore}} </h3>
 {% for answer in answers %}
-{{answer.name}}) {{answer.status}}
+{{answer}}
 <br>
 {% endfor %}
 <a href="{{ url_for('housekeeping') }}">Return to Home</a>

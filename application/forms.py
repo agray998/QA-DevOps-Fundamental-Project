@@ -23,5 +23,5 @@ class UpdateOptions(FlaskForm):
     submit = SubmitField('Update Option')
 
 class AnswerQuestion(FlaskForm):
-    sel_opt = SelectField('Select your answer:', choices=[('A','A'),('B','B'),('C','C'),('D','D')])
+    sel_opt = SelectField('Select your answer:', choices=[])
     submit = SubmitField('Submit Answer')

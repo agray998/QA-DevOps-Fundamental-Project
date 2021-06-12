@@ -1,9 +1,9 @@
 {% extends 'layout.html' %}
 {% block body %}
-<h2> {{question.question}} </h2>
+<h2> {{question}} </h2>
 <br>
 {% for option in options %}
-{{option.optletter}}: {{option.option}}
+{{option}}
 <br>
 {% endfor %}
 <div class='form'>
