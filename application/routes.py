@@ -11,8 +11,8 @@ def home():
 
 @app.route('/questions')
 def questions():
-    questions = Questions.query.all()
-    return render_template('questions.html', questions=questions)
+    quizzes = Quiz.query.all()
+    return render_template('questions.html', quizzes=quizzes)
 
 @app.route('/question-<int:qid>')
 def question(qid):
