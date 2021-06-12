@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, SelectField
+from wtforms import StringField, SubmitField, SelectField, IntegerField
 from wtforms.validators import DataRequired
 
 class AddQuiz(FlaskForm):
@@ -7,6 +7,7 @@ class AddQuiz(FlaskForm):
     submit = SubmitField('Add Quiz')
 
 class AddQuestion(FlaskForm):
+    q_num = IntegerField('Question Number')
     q_name = StringField('Question', validators=[DataRequired(message="This field cannot be left blank")])
     quiz = SelectField('Add to quiz:', choices=[])
     submit = SubmitField('Add Question')
@@ -26,6 +27,10 @@ class UpdateOptions(FlaskForm):
     o_option = StringField('Option', validators=[DataRequired(message="This field cannot be left blank")])
     o_status = SelectField('Correct/incorrect', choices=[('correct','Correct'),('incorrect','Incorrect')])
     submit = SubmitField('Update Option')
+
+class SelectQuiz(FlaskForm):
+    q_id = SelectField('Quiz', choices=[])
+    submit = SubmitField('Choose Quiz')
 
 class AnswerQuestion(FlaskForm):
     sel_opt = SelectField('Select your answer:', choices=[])

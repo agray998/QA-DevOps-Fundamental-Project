@@ -7,11 +7,12 @@ class Quiz(db.Model):
 
 class Questions(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    num = db.Column(db.Integer)
     question = db.Column(db.String(50))
     quiz_id = db.Column(db.Integer, db.ForeignKey('quiz.id'))
     options = db.relationship('Options', backref='question')
     def __repr__(self):
-        return f"Question {self.id}) {self.question}"
+        return f"Question {self.num}) {self.question}"
 
 class Options(db.Model):
     id = db.Column(db.Integer, primary_key=True)

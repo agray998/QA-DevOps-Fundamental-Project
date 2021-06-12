@@ -5,6 +5,7 @@
 <div class='form'>
             <form method='POST' action=''>
                 {{ form.hidden_tag() }}
+                {{ form.q_num.label }} {{ form.q_num }}
                 {{ form.q_name.label }} {{ form.q_name }}
                 {{ form.quiz.label }} {{ form.quiz }}
                 <br>

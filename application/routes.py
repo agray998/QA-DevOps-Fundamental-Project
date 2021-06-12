@@ -1,5 +1,5 @@
 from application import app, db
-from application.forms import AddQuestion, UpdateQuestion, AddOptions, UpdateOptions, AnswerQuestion, AddQuiz
+from application.forms import AddQuestion, UpdateQuestion, AddOptions, UpdateOptions, AnswerQuestion, AddQuiz, SelectQuiz
 from application.models import Questions, Options, Answer, Result, Quiz
 from flask import render_template, request, redirect, url_for
 from datetime import date
@@ -38,9 +38,10 @@ def add_q():
     for quiz in quizzes:
         form.quiz.choices.append((quiz.id, quiz.quiz_name))
     if request.method == 'POST':
+        q_num = form.q_num.data
         q_name = form.q_name.data
         quiz_id = form.quiz.data
-        newquest = Questions(question = q_name, quiz_id = quiz_id)
+        newquest = Questions(num = q_num, question = q_name, quiz_id = quiz_id)
         db.session.add(newquest)
         db.session.commit()
         return redirect(url_for('add_o', qid=newquest.id))
@@ -109,10 +110,20 @@ def delete_q(qid):
     db.session.commit()
     return redirect(url_for('questions'))
 
-@app.route('/answer-<int:qid>', methods=['GET','POST'])
-def answer_q(qid):
+@app.route('/choose-quiz', methods=['GET', 'POST'])
+def select_quiz():
+    form = SelectQuiz()
+    for quiz in Quiz.query.all():
+        form.q_id.choices.append((quiz.id, quiz.quiz_name))
+    if request.method == 'POST':
+        qid = form.q_id.data
+        return redirect(url_for('answer_q', qid=qid, qnum=1))
+    return render_template('select_quiz.html', form=form)
+
+@app.route('/answer-<int:qid>/<int:qnum>', methods=['GET','POST'])
+def answer_q(qid, qnum):
     form = AnswerQuestion()
-    question = Questions.query.filter_by(id=qid).first()
+    question = Questions.query.filter_by(quiz_id=qid, num=qnum).first()
     options = question.options
     for option in options:
         form.sel_opt.choices.append((option.id, option.option))
@@ -122,10 +133,10 @@ def answer_q(qid):
         newans = Answer(name = ans.__repr__(), status = ans.status)
         db.session.add(newans)
         db.session.commit()
-        if qid == Questions.query.order_by(Questions.id.desc()).first().id:
+        if qnum == Questions.query.filter_by(quiz_id=qid).order_by(Questions.num.desc()).first().num:
             return redirect(url_for('show_results'))
         else:
-            return redirect(url_for('answer_q', qid=qid+1))
+            return redirect(url_for('answer_q', qid=qid, qnum=qnum + 1))
     return render_template('answer-question.html', form=form, question=question, options=options)
 
 @app.route('/results')
