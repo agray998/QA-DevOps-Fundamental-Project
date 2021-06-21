@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  todo-app:
+    container_name: "quiz-app"
+    image: ${AUTHOR}/quiz-app:${VERSION}
+    build: .
+    environment:
+      DATABASE_URI: ${DATABASE_URI}
+      SECRET_KEY: ${SECRET_KEY}
+    ports:
+    - target: 5000
+      published: 80
