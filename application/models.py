@@ -11,7 +11,7 @@ class Questions(db.Model):
     question = db.Column(db.String(50))
     quiz_id = db.Column(db.Integer, db.ForeignKey('quiz.id'))
     options = db.relationship('Options', backref='question')
-    def __repr__(self):
+    def __str__(self):
         return f"Question {self.num}) {self.question}"
 
 class Options(db.Model):
@@ -20,14 +20,14 @@ class Options(db.Model):
     option = db.Column(db.String(30))
     status = db.Column(db.String(10))
     question_id = db.Column(db.Integer, db.ForeignKey('questions.id'))
-    def __repr__(self):
+    def __str__(self):
         return f"{self.optletter}) {self.option}"
 
 class Answer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30))
     status = db.Column(db.String(10))
-    def __repr__(self):
+    def __str__(self):
         return f"{self.name} - {self.status}"
 
 class Result(db.Model):
