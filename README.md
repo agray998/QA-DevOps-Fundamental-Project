@@ -87,7 +87,7 @@ Finally, users can take the quiz by following the 'Take Quiz' link; answers are 
 ## Updates:
 * 12/06/2021:
     * Background colour changed to a more pleasant dodger blue
-    * __repr__ methods added to Questions and Options classes
+    * __str__ methods added to Questions and Options classes
     * Quiz class added
     * Questions can now be categorised by quiz
     * Different quizzes can now be taken independently
