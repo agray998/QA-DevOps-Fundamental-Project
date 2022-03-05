@@ -130,7 +130,7 @@ def answer_q(qid, qnum):
     if request.method == 'POST':
         ans_opt = form.sel_opt.data
         ans = Options.query.filter_by(id = ans_opt).first()
-        newans = Answer(name = ans.__repr__(), status = ans.status)
+        newans = Answer(name = ans.__str__(), status = ans.status)
         db.session.add(newans)
         db.session.commit()
         if qnum == Questions.query.filter_by(quiz_id=qid).order_by(Questions.num.desc()).first().num:
