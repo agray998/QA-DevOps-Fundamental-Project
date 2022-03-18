@@ -17,11 +17,11 @@ class Questions(db.Model):
 class Options(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     optletter = db.Column(db.String(1))
-    option = db.Column(db.String(30))
-    status = db.Column(db.String(10))
+    o_option = db.Column(db.String(30))
+    o_status = db.Column(db.String(10))
     question_id = db.Column(db.Integer, db.ForeignKey('questions.id'))
     def __str__(self):
-        return f"{self.optletter}) {self.option}"
+        return f"{self.optletter}) {self.o_option}"
 
 class Answer(db.Model):
     id = db.Column(db.Integer, primary_key=True)

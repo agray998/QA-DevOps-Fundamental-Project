@@ -1,0 +1,45 @@
+version: "3.8"
+services:
+  mysql:
+    container_name: mysql
+    image: agray998/fund-proj-db:latest
+    build: ./db
+    volumes:
+      - type: volume
+        source: app-vol
+        target: /var/lib/mysql
+    networks:
+      - app-net
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: app-db
+  flask-app:
+    container_name: flask-app
+    image: agray998/fund-proj-app:latest
+    build: ./flask-app
+    networks:
+      - app-net
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    depends_on:
+      - "mysql"
+  nginx:
+    container_name: nginx
+    image: nginx:latest
+    networks:
+      - app-net
+    ports:
+      - target: 80
+        published: 80
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: ./nginx.conf
+        target: /etc/nginx/nginx.conf
+    depends_on:
+      - "flask-app"
+volumes:
+  app-vol:
+networks:
+  app-net:
+   # driver: overlay (uncomment when deploying via docker stack)

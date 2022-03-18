@@ -47,6 +47,10 @@ def add_q():
         return redirect(url_for('add_o', qid=newquest.id))
     return render_template('add_question.html', form=form)
 
+@app.route('/bounce/<int:qid>', methods=['GET'])
+def bounce(qid):
+    return redirect(url_for('add_o', qid=qid))
+
 @app.route('/add-options/<int:qid>', methods=['GET','POST'])
 def add_o(qid):
     form = AddOptions()
@@ -55,13 +59,13 @@ def add_o(qid):
         option = form.o_option.data
         o_status = form.o_status.data
         quest_id = qid
-        newopt = Options(optletter = o_letter, option = option, status = o_status, question_id = qid)
+        newopt = Options(optletter = o_letter, o_option = option, o_status = o_status, question_id = qid)
         db.session.add(newopt)
         db.session.commit()
         question = Questions.query.filter_by(id = qid).first()
         question.options = Options.query.filter_by(question_id = qid).all()
         db.session.commit()
-        return redirect(url_for('add_o', qid=qid))
+        return redirect(url_for('bounce', qid=qid))
     return render_template('add_options.html', form=form)
 
 @app.route('/update-question/<int:qid>', methods=['GET','POST'])
@@ -86,8 +90,8 @@ def update_o(oid):
         opt = Options.query.filter_by(id=oid).first()
         qid = Questions.query.filter_by(id=opt.question_id).first().id
         opt.optletter = o_letter
-        opt.option = option
-        opt.status = o_status
+        opt.o_option = option
+        opt.o_status = o_status
         db.session.commit()
         return redirect(url_for('question', qid=qid))
     return render_template('update_options.html', form=form)
@@ -126,11 +130,11 @@ def answer_q(qid, qnum):
     question = Questions.query.filter_by(quiz_id=qid, num=qnum).first()
     options = question.options
     for option in options:
-        form.sel_opt.choices.append((option.id, option.option))
+        form.sel_opt.choices.append((option.id, option.o_option))
     if request.method == 'POST':
         ans_opt = form.sel_opt.data
         ans = Options.query.filter_by(id = ans_opt).first()
-        newans = Answer(name = ans.__str__(), status = ans.status)
+        newans = Answer(name = ans.__str__(), status = ans.o_status)
         db.session.add(newans)
         db.session.commit()
         if qnum == Questions.query.filter_by(quiz_id=qid).order_by(Questions.num.desc()).first().num:

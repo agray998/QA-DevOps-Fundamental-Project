@@ -1,0 +1,29 @@
+CREATE TABLE IF NOT EXISTS quiz (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    quiz_name VARCHAR(30) NOT NULL
+);
+CREATE TABLE IF NOT EXISTS questions (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    num INT NOT NULL,
+    question VARCHAR(50) NOT NULL,
+    quiz_id INT NOT NULL,
+    FOREIGN KEY (quiz_id) REFERENCES quiz(id)
+);
+CREATE TABLE IF NOT EXISTS options (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    optletter CHAR(1) NOT NULL,
+    o_option VARCHAR(30) NOT NULL,
+    o_status VARCHAR(10) NOT NULL,
+    question_id INT NOT NULL,
+    FOREIGN KEY (question_id) REFERENCES questions(id)
+);
+CREATE TABLE IF NOT EXISTS answer (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(30) NOT NULL,
+    status VARCHAR(10) NOT NULL
+);
+CREATE TABLE IF NOT EXISTS result (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    score INT NOT NULL,
+    date DATETIME NOT NULL
+);
