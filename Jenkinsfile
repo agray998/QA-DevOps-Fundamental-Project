@@ -25,7 +25,7 @@ pipeline {
                 sh "echo '    driver: overlay' >> docker-compose.yaml"
                 sh "scp ./docker-compose.yaml jenkins@swarm-manager:/home/jenkins/docker-compose.yaml"
                 sh "scp ./nginx.conf jenkins@swarm-manager:/home/jenkins/nginx.conf"
-                sh "ssh jenkins@swarm-manager 'docker stack deploy --compose-file docker-compose.yaml fun-proj-stack'"
+                sh "ssh jenkins@swarm-manager < deploy.sh"
             }
         }
     }
