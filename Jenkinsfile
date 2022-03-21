@@ -3,8 +3,10 @@ pipeline {
     stages {
         stage('test') {
             steps {
-                sh "rm flask-app/application/tests/test_int*"
-                sh "bash flask-app/test_basic.sh"
+                dir('flask-app') {
+                    sh "rm application/tests/test_int*"
+                    sh "bash test_basic.sh"
+                }
             }
         }
     }
