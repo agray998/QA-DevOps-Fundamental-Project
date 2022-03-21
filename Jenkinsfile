@@ -11,7 +11,7 @@ pipeline {
         }
         stage('build and push') {
             environment {
-                DOCKER_CREDS = credentials('docker_creds')
+                DOCKER_CREDS = credentials('docker-creds')
             }
             steps {
                 sh "docker-compose build --parallel"
