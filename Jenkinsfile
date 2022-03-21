@@ -12,7 +12,7 @@ pipeline {
     }
     post {
         always {
-            archiveArtifacts artifacts: "${WORKSPACE}/flask-app/htmlcov/*"
+            archiveArtifacts artifacts: "flask-app/htmlcov/*"
         }
     }
 }
