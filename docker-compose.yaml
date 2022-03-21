@@ -21,6 +21,7 @@ services:
       - app-net
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      SECRET_KEY: ${SECRET_KEY}
     depends_on:
       - "mysql"
   nginx:
