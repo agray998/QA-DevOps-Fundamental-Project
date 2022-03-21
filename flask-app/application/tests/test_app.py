@@ -1,7 +1,7 @@
 from flask import url_for
 from flask_testing import TestCase
 from application import app, db
-from application.models import Questions, Options
+from application.models import Questions, Options, Quiz
 
 # Create the base class
 class TestBase(TestCase):
@@ -22,8 +22,11 @@ class TestBase(TestCase):
         # Create table
         db.create_all()
 
+        # Create test quiz
+        quiz1 = Quiz(quiz_name='Example quiz')
+
         # Create test question
-        sample1 = Questions(question="Testq")
+        sample1 = Questions(question="Testq", num=1, quiz_id=1)
 
         # save question to database
         db.session.add(sample1)
@@ -127,7 +130,7 @@ class TestDelq(TestBase):
 class Testquiz(TestBase):
     def test_take_quiz(self):
         response = self.client.post(
-            url_for('answer_q', qid=1),
+            url_for('answer_q', qnum=1),
             data = dict(sel_opt='A'),
             follow_redirects=True
         )
@@ -136,7 +139,7 @@ class Testquiz(TestBase):
 class Testquiz2(TestBase):
     def test_bad_opt(self):
         response = self.client.post(
-            url_for('answer_q', qid=1),
+            url_for('answer_q', qnum=1),
             data = dict(sel_opt='B'),
             follow_redirects=True
         )
