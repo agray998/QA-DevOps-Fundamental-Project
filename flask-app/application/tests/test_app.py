@@ -29,7 +29,7 @@ class TestBase(TestCase):
         db.session.add(sample1)
         db.session.commit()
 
-        sampleopt = Options(optletter = 'A', option = "This is a test option", status = 'correct', question_id = sample1.id)
+        sampleopt = Options(optletter = 'A', o_option = "This is a test option", o_status = 'correct', question_id = sample1.id)
         db.session.add(sampleopt)
         db.session.commit()
 
