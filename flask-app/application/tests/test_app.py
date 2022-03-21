@@ -49,7 +49,7 @@ class TestViews(TestBase):
     def test_qs_get(self):
         response = self.client.get(url_for('questions'))
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b'Testq', response.data)
+        self.assertIn(b'Example quiz', response.data)
 
 class TestHome(TestBase):
     def test_home_get(self):
@@ -130,7 +130,7 @@ class TestDelq(TestBase):
 class Testquiz(TestBase):
     def test_take_quiz(self):
         response = self.client.post(
-            url_for('answer_q', qnum=1),
+            url_for('answer_q', qid=1, qnum=1),
             data = dict(sel_opt='A'),
             follow_redirects=True
         )
@@ -139,7 +139,7 @@ class Testquiz(TestBase):
 class Testquiz2(TestBase):
     def test_bad_opt(self):
         response = self.client.post(
-            url_for('answer_q', qnum=1),
+            url_for('answer_q', qid=1, qnum=1),
             data = dict(sel_opt='B'),
             follow_redirects=True
         )
