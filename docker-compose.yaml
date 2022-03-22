@@ -15,7 +15,7 @@ services:
       MYSQL_DATABASE: app-db
   flask-app:
     container_name: flask-app
-    image: agray998/fund-proj-app:latest
+    image: agray998/fund-proj-app:v2
     build: ./flask-app
     networks:
       - app-net
