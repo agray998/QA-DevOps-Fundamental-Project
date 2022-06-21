@@ -12,7 +12,6 @@ services:
       - app-net
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: app-db
   flask-app:
     container_name: flask-app
     image: agray998/fund-proj-app:v2
@@ -23,7 +22,7 @@ services:
       DATABASE_URI: ${DATABASE_URI}
       SECRET_KEY: ${SECRET_KEY}
     depends_on:
-      - "mysql"
+      - mysql
   nginx:
     container_name: nginx
     image: nginx:latest
@@ -38,7 +37,7 @@ services:
         source: ./nginx.conf
         target: /etc/nginx/nginx.conf
     depends_on:
-      - "flask-app"
+      - flask-app
 volumes:
   app-vol:
 networks:
