@@ -4,7 +4,7 @@ from urllib.request import urlopen
 from flask import url_for
 
 from application import app, db
-from application.models import Questions, Options
+from application.models import Questions, Options, Quiz
 from application.forms import AddQuestion
 
 class TestBase(LiveServerTestCase):
@@ -27,11 +27,12 @@ class TestBase(LiveServerTestCase):
         chrome_options = webdriver.chrome.options.Options()
         chrome_options.add_argument('--headless')
 
-        self.driver = webdriver.Chrome(options=chrome_options)
+        self.driver = webdriver.Chrome(executable_path='/snap/bin/chromium.chromedriver', options=chrome_options)
 
         db.create_all() # create schema before we try to get the page
-        newquest = Questions(question="Test")
-        db.session.add(newquest)
+        newquiz = Quiz(quiz_name="Sample")
+        newquest = Questions(num=1, question="Test", quiz_id=1)
+        db.session.add_all([newquiz, newquest])
         db.session.commit()
 
         self.driver.get(f'http://localhost:{self.TEST_PORT}/update-question/1')
